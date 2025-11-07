@@ -21,6 +21,7 @@ const storage = multer.diskStorage({
   let packages = [
 [
   {
+    "_id": "1",
     "vehicle_type": "boat",
     "teir": "bronze",
     "interior_services": [
@@ -34,13 +35,12 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 250,
     "images": [
-      "boats/bronze/deck.jpeg",
-      "boats/bronze/overview.jpeg",
-      "boats/bronze/seats.jpeg"
+      "/test.png"
     ],
     "summary": "Our Bronze Boat Detail offers an essential interior and exterior wash to remove dirt, grime, and buildup, leaving your vessel clean and refreshed for the water."
   },
   {
+    "_id": "2",
     "vehicle_type": "boat",
     "teir": "silver",
     "interior_services": [
@@ -56,14 +56,12 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 300,
     "images": [
-      "boats/silver/bimini.jpeg",
-      "boats/silver/deck.jpeg",
-      "boats/silver/exterior1.jpeg",
-      "boats/silver/seats.jpeg"
+      "/test.png"
     ],
     "summary": "The Silver Boat Detail provides a deeper clean including mildew removal, bimini cleaning, and a full interior refresh for a polished, like-new finish."
   },
   {
+    "_id": "3",
     "vehicle_type": "boat",
     "teir": "gold",
     "interior_services": [
@@ -82,14 +80,12 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 400,
     "images": [
-      "boats/gold/wax.jpeg",
-      "boats/gold/overview.jpeg",
-      "boats/gold/seats.jpeg",
-      "boats/gold/after.jpeg"
+      "/test.png"
     ],
     "summary": "Our Gold Boat Detail delivers a premium inside-and-out service with waxing, polishing, and full interior restoration to bring your boat to showroom quality."
   },
   {
+    "_id": "4",
     "vehicle_type": "auto",
     "teir": "silver",
     "interior_services": [
@@ -108,14 +104,12 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 250,
     "images": [
-      "automotive/silver/back-seats.jpeg",
-      "automotive/silver/dash.jpeg",
-      "automotive/silver/exterior1.jpeg",
-      "automotive/silver/wheels.jpeg"
+      "/test.png"
     ],
     "summary": "Our Silver Auto Detail includes a thorough interior cleaning and an exterior wash to leave your car looking spotless and refreshed, inside and out."
   },
   {
+    "_id": "5",
     "vehicle_type": "auto",
     "teir": "gold",
     "interior_services": [
@@ -135,18 +129,20 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 350,
     "images": [
-      "automotive/gold/back-seats.jpeg",
-      "automotive/gold/dash.jpeg",
-      "automotive/gold/exterior1.jpeg",
-      "automotive/gold/wheels.jpeg"
+      "/test.png"
     ],
     "summary": "The Gold Auto Detail provides a complete deep clean and wax for your vehicle, restoring both interior and exterior surfaces to a premium, polished finish."
   }
 ]
 ];
 
-app.get("/api/packages", (req, res) => {
+app.get("/api/packages", (req, res) => { //Get All Packages
     res.send(packages);
+});
+
+app.get("/api/houses/:id", (req, res)=>{ //Get Specific Packages at a Given index
+    const house = houses.find((house)=>house._id === parseInt(req.params.id));
+    res.send(house);
 });
 
 app.listen(3001, () => {
