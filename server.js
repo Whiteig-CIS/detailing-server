@@ -19,91 +19,129 @@ const storage = multer.diskStorage({
   const upload = multer({ storage: storage });
 
   let packages = [
-[{
-    "_id":1,
-    "vehicle_type": "pontoon",
-    "teir": "gold",
-    "interior_services": ["Seats washed with soap and water.", "All compartments cleaned out and washed", "Deck of boat pressure washed", "Any mold / mildew removed.", "Bimini cleaned with soap and water.", "Gloss fiberglass / waxable surfaces waxed."],
-    "exterior_services": ["All exposed dirt / grime pressure washed off.", "Side walls washed with ph-neutral soap.", "Side-walls waxed", "Pontoons acid washed"],
-    "starting_price": 400,
-    "images": ["pontoons/gold/acid.jpeg", "pontoons/gold/console.jpeg", "pontoons/gold/engine.jpeg", "pontoons/gold/overview.jpeg", "pontoons/gold/seats.jpeg", "pontoons/gold/wax.jpeg"]
-}
-
-,{
-    "_id":2,
-    "vehicle_type": "pontoon",
-    "teir": "silver",
-    "interior_services": ["Seats washed with soap and water.", "All compartments cleaned out and washed", "Deck of boat pressure washed", "Any mold / mildew removed.", "Bimini cleaned with soap and water."],
-    "exterior_services": ["All exposed dirt / grime pressure washed off.", "Side walls washed with ph-neutral soap.", "Pontoons acid washed"],
-    "starting_price": 300,
-    "images": ["pontoons/silver/bimini.jpeg", "pontoons/silver/compartments.png", "pontoons/silver/deck.jpeg", "pontoons/silver/exterior-bronze1.jpeg", "pontoons/silver/exterior-bronze2.jpeg", "pontoons/silver/seats-noBleach.png"]
-}
-
-,{
-    "_id":3,
-    "vehicle_type": "pontoon",
+[
+  {
+    "vehicle_type": "boat",
     "teir": "bronze",
-    "interior_services": ["Seats washed with soap and water.", "All compartments cleaned out and washed", "Deck of boat pressure washed"],
-    "exterior_services": ["All exposed dirt / grime pressure washed off.", "Side walls washed with ph-neutral soap."],
+    "interior_services": [
+      "Seats washed with soap and water.",
+      "All compartments cleaned out and washed.",
+      "Deck of boat pressure washed."
+    ],
+    "exterior_services": [
+      "All exposed dirt and grime pressure washed off.",
+      "Boat sides washed with pH-neutral soap."
+    ],
     "starting_price": 250,
-    "images": ["pontoons/silver/compartments.png", "pontoons/silver/deck.jpeg", "pontoons/silver/exterior-bronze1.jpeg", "pontoons/silver/exterior-bronze2.jpeg", "pontoons/silver/seats-noBleach.png"]
-}
-
-,{
-    "_id":4,
-    "vehicle_type": "haul",
-    "teir": "gold",
-    "interior_services": ["Seats washed with soap and water.", "All compartments cleaned out and washed", "Deck of boat pressure washed", "Any mold / mildew removed.", "Bimini cleaned with soap and water.", "Gloss fiberglass / waxable surfaces waxed.", "Carper / SeaDeck scrubbed and cleaned."],
-    "exterior_services": ["All exposed dirt / grime pressure washed off.", "Haul washed with ph-neutral soap.", "Haul waxed and polished."],
-    "starting_price": 400,
-    "images": ["hauls/bronze/overview-deck-boat.jpeg", "hauls/bronze/overview.jpeg", "hauls/silver/bimini.jpeg", "hauls/silver/seats.jpeg", "hauls/gold/after.jpeg", "hauls/gold/before.jpeg", "hauls/gold/orange-overview.jpeg", "hauls/gold/wax.jpeg"]
-    
-}
-
-,{
-    "_id":5,
-    "vehicle_type": "haul",
+    "images": [
+      "boats/bronze/deck.jpeg",
+      "boats/bronze/overview.jpeg",
+      "boats/bronze/seats.jpeg"
+    ],
+    "summary": "Our Bronze Boat Detail offers an essential interior and exterior wash to remove dirt, grime, and buildup, leaving your vessel clean and refreshed for the water."
+  },
+  {
+    "vehicle_type": "boat",
     "teir": "silver",
-    "interior_services": ["Seats washed with soap and water.", "All compartments cleaned out and washed", "Deck of boat pressure washed", "Any mold / mildew removed.", "Bimini cleaned with soap and water."],
-    "exterior_services": ["All exposed dirt / grime pressure washed off.", "Haul washed with ph-neutral soap."],
+    "interior_services": [
+      "Seats washed with soap and water.",
+      "All compartments cleaned out and washed.",
+      "Deck of boat pressure washed.",
+      "Any mold or mildew removed.",
+      "Bimini cleaned with soap and water."
+    ],
+    "exterior_services": [
+      "All exposed dirt and grime pressure washed off.",
+      "Boat sides washed with pH-neutral soap."
+    ],
     "starting_price": 300,
-    "images": ["hauls/bronze/overview-deck-boat.jpeg", "hauls/bronze/overview.jpeg", "hauls/silver/bimini.jpeg", "hauls/silver/seats.jpeg"]
-}
-
-,{
-    "_id":6,
-    "vehicle_type": "haul",
-    "teir": "bronze",
-    "interior_services": ["Seats washed with soap and water.", "All compartments cleaned out and washed", "Deck of boat pressure washed"],
-    "exterior_services": ["All exposed dirt / grime pressure washed off."],
-    "starting_price": 250,
-    "images": ["hauls/bronze/overview-deck-boat.jpeg", "hauls/bronze/overview.jpeg"]
-}
-
-,{
-    "_id":7,
-    "vehicle_type":"passenger_vehicle",
-    "teir": "silver",
-    "interior_services": ["Leather seats: Wiped down and cleaned.", "Cloth Seats: Gently scrubed and vacummed.", "All plastics whiped down and dusted.", "Carpets vacummed and gently scrubbed.", "Floor mats cleaned.", "Windows cleaned."],
-    "exterior_services": ["Exterior wash.", "Wheels and tired washed and dressed.", "Windows cleaned", "Truck bed pressure washed"],
-    "starting_price": 250,
-    "images": ["automotive/silver/back-seats.jpeg", "automotive/silver/dash.jpeg", "automotive/silver/driver-dash.jpeg", "automotive/silver/exterior1.jpeg", "automotive/silver/exterior2.jpeg", "automotive/silver/passenger-dash.jpeg", "automotive/silver/truck.jpeg", "automotive/silver/wheels.jpeg"]
-}
-
-,{
-    "_id":8,
-    "vehicle_type":"passenger_vehicle",
+    "images": [
+      "boats/silver/bimini.jpeg",
+      "boats/silver/deck.jpeg",
+      "boats/silver/exterior1.jpeg",
+      "boats/silver/seats.jpeg"
+    ],
+    "summary": "The Silver Boat Detail provides a deeper clean including mildew removal, bimini cleaning, and a full interior refresh for a polished, like-new finish."
+  },
+  {
+    "vehicle_type": "boat",
     "teir": "gold",
-    "interior_services": ["Leather seats: Wiped down and cleaned.", "Cloth Seats: Extracted and vaccumed", "All plastics whiped down and dusted.", "Carpets vacummed and extracted", "Floor mats cleaned.", "Windows cleaned."],
-    "exterior_services": ["Exterior wash and waxed.", "Wheels and tired washed and dressed.", "Truck bed pressure washed and scrubbed.", "Windows cleaned.", "Engine bay cleaned and dressed."],
+    "interior_services": [
+      "Seats washed with soap and water.",
+      "All compartments cleaned out and washed.",
+      "Deck of boat pressure washed.",
+      "Any mold or mildew removed.",
+      "Bimini cleaned with soap and water.",
+      "Carpet or SeaDeck scrubbed and cleaned.",
+      "Gloss fiberglass and waxable surfaces waxed."
+    ],
+    "exterior_services": [
+      "All exposed dirt and grime pressure washed off.",
+      "Boat sides washed with pH-neutral soap.",
+      "Boat exterior waxed and polished."
+    ],
+    "starting_price": 400,
+    "images": [
+      "boats/gold/wax.jpeg",
+      "boats/gold/overview.jpeg",
+      "boats/gold/seats.jpeg",
+      "boats/gold/after.jpeg"
+    ],
+    "summary": "Our Gold Boat Detail delivers a premium inside-and-out service with waxing, polishing, and full interior restoration to bring your boat to showroom quality."
+  },
+  {
+    "vehicle_type": "auto",
+    "teir": "silver",
+    "interior_services": [
+      "Leather seats wiped down and cleaned.",
+      "Cloth seats gently scrubbed and vacuumed.",
+      "All plastics wiped down and dusted.",
+      "Carpets vacuumed and gently scrubbed.",
+      "Floor mats cleaned.",
+      "Windows cleaned."
+    ],
+    "exterior_services": [
+      "Exterior wash.",
+      "Wheels and tires washed and dressed.",
+      "Windows cleaned.",
+      "Truck bed pressure washed."
+    ],
+    "starting_price": 250,
+    "images": [
+      "automotive/silver/back-seats.jpeg",
+      "automotive/silver/dash.jpeg",
+      "automotive/silver/exterior1.jpeg",
+      "automotive/silver/wheels.jpeg"
+    ],
+    "summary": "Our Silver Auto Detail includes a thorough interior cleaning and an exterior wash to leave your car looking spotless and refreshed, inside and out."
+  },
+  {
+    "vehicle_type": "auto",
+    "teir": "gold",
+    "interior_services": [
+      "Leather seats wiped down and cleaned.",
+      "Cloth seats extracted and vacuumed.",
+      "All plastics wiped down and dusted.",
+      "Carpets vacuumed and extracted.",
+      "Floor mats cleaned.",
+      "Windows cleaned."
+    ],
+    "exterior_services": [
+      "Exterior wash and wax.",
+      "Wheels and tires washed and dressed.",
+      "Truck bed pressure washed and scrubbed.",
+      "Windows cleaned.",
+      "Engine bay cleaned and dressed."
+    ],
     "starting_price": 350,
-    "images": ["automotive/silver/back-seats.jpeg", "automotive/silver/dash.jpeg", "automotive/silver/driver-dash.jpeg", "automotive/silver/exterior1.jpeg", "automotive/silver/exterior2.jpeg", "automotive/silver/passenger-dash.jpeg", "automotive/silver/truck.jpeg", "automotive/silver/wheels.jpeg"]
-}
-
-
-
-
-
+    "images": [
+      "automotive/gold/back-seats.jpeg",
+      "automotive/gold/dash.jpeg",
+      "automotive/gold/exterior1.jpeg",
+      "automotive/gold/wheels.jpeg"
+    ],
+    "summary": "The Gold Auto Detail provides a complete deep clean and wax for your vehicle, restoring both interior and exterior surfaces to a premium, polished finish."
+  }
 ]
 ];
 
