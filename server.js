@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
   
   const upload = multer({ storage: storage });
 
-  let packages = [
+  let packages = 
 [
   {
     "_id": "1",
@@ -134,16 +134,17 @@ const storage = multer.diskStorage({
     "summary": "The Gold Auto Detail provides a complete deep clean and wax for your vehicle, restoring both interior and exterior surfaces to a premium, polished finish."
   }
 ]
-];
+;
 
 app.get("/api/packages", (req, res) => { //Get All Packages
     res.send(packages);
 });
 
+/*
 app.get("/api/houses/:id", (req, res)=>{ //Get Specific Packages at a Given index
     const house = houses.find((house)=>house._id === parseInt(req.params.id));
     res.send(house);
-});
+}); */
 
 app.listen(3001, () => {
 });
