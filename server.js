@@ -37,7 +37,8 @@ const storage = multer.diskStorage({
     "images": [
       "/test.png"
     ],
-    "summary": "Our Bronze Boat Detail offers an essential interior and exterior wash to remove dirt, grime, and buildup, leaving your vessel clean and refreshed for the water."
+    "summary": "Our Bronze Boat Detail offers an essential interior and exterior wash to remove dirt, grime, and buildup, leaving your vessel clean and refreshed for the water.",
+     "preview_image": "14a.jpeg"
   },
   {
     "_id": "2",
@@ -58,7 +59,8 @@ const storage = multer.diskStorage({
     "images": [
       "/test.png"
     ],
-    "summary": "The Silver Boat Detail provides a deeper clean including mildew removal, bimini cleaning, and a full interior refresh for a polished, like-new finish."
+    "summary": "The Silver Boat Detail provides a deeper clean including mildew removal, bimini cleaning, and a full interior refresh for a polished, like-new finish.",
+    "preview_image": "18a.jpeg"
   },
   {
     "_id": "3",
@@ -82,7 +84,8 @@ const storage = multer.diskStorage({
     "images": [
       "/test.png"
     ],
-    "summary": "Our Gold Boat Detail delivers a premium inside-and-out service with waxing, polishing, and full interior restoration to bring your boat to showroom quality."
+    "summary": "Our Gold Boat Detail delivers a premium inside-and-out service with waxing, polishing, and full interior restoration to bring your boat to showroom quality.",
+     "preview_image": "10a.jpeg"
   },
   {
     "_id": "4",
@@ -106,7 +109,8 @@ const storage = multer.diskStorage({
     "images": [
       "/test.png"
     ],
-    "summary": "Our Silver Auto Detail includes a thorough interior cleaning and an exterior wash to leave your car looking spotless and refreshed, inside and out."
+    "summary": "Our Silver Auto Detail includes a thorough interior cleaning and an exterior wash to leave your car looking spotless and refreshed, inside and out.",
+     "preview_image": "3a.jpeg"
   },
   {
     "_id": "5",
@@ -131,7 +135,8 @@ const storage = multer.diskStorage({
     "images": [
       "/test.png"
     ],
-    "summary": "The Gold Auto Detail provides a complete deep clean and wax for your vehicle, restoring both interior and exterior surfaces to a premium, polished finish."
+    "summary": "The Gold Auto Detail provides a complete deep clean and wax for your vehicle, restoring both interior and exterior surfaces to a premium, polished finish.",
+     "preview_image": "2a.jpeg"
   }
 ]
 ;
