@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 250,
     "images": [
-      "/test.png"
+      ["18a.jpeg", "18b.jpeg"], ["19a.jpeg", "19b.jpeg"], ["20a.jpeg", "20b.jpeg"], ["16a.jpeg", "16b.jpeg"], ["17a.jpeg", "17b.jpeg"], ["15a.jpeg", "15b.jpeg"]
     ],
     "summary": "Our Bronze Boat Detail offers an essential interior and exterior wash to remove dirt, grime, and buildup, leaving your vessel clean and refreshed for the water.",
      "preview_image": "14a.jpeg"
@@ -57,7 +57,7 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 300,
     "images": [
-      "/test.png"
+      ["18a.jpeg", "18b.jpeg"], ["19a.jpeg", "19b.jpeg"], ["20a.jpeg", "20b.jpeg"], ["16a.jpeg", "16b.jpeg"], ["17a.jpeg", "17b.jpeg"], ["15a.jpeg", "15b.jpeg"]
     ],
     "summary": "The Silver Boat Detail provides a deeper clean including mildew removal, bimini cleaning, and a full interior refresh for a polished, like-new finish.",
     "preview_image": "18a.jpeg"
@@ -82,7 +82,7 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 400,
     "images": [
-      "/test.png"
+      ["18a.jpeg", "18b.jpeg"], ["19a.jpeg", "19b.jpeg"], ["20a.jpeg", "20b.jpeg"], ["16a.jpeg", "16b.jpeg"], ["17a.jpeg", "17b.jpeg"], ["15a.jpeg", "15b.jpeg"]
     ],
     "summary": "Our Gold Boat Detail delivers a premium inside-and-out service with waxing, polishing, and full interior restoration to bring your boat to showroom quality.",
      "preview_image": "10a.jpeg"
@@ -107,7 +107,7 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 250,
     "images": [
-      "/test.png"
+      ["18a.jpeg", "18b.jpeg"], ["19a.jpeg", "19b.jpeg"], ["20a.jpeg", "20b.jpeg"], ["16a.jpeg", "16b.jpeg"], ["17a.jpeg", "17b.jpeg"], ["15a.jpeg", "15b.jpeg"]
     ],
     "summary": "Our Silver Auto Detail includes a thorough interior cleaning and an exterior wash to leave your car looking spotless and refreshed, inside and out.",
      "preview_image": "3a.jpeg"
@@ -133,7 +133,7 @@ const storage = multer.diskStorage({
     ],
     "starting_price": 350,
     "images": [
-      "/test.png"
+      ["18a.jpeg", "18b.jpeg"], ["19a.jpeg", "19b.jpeg"], ["20a.jpeg", "20b.jpeg"], ["16a.jpeg", "16b.jpeg"], ["17a.jpeg", "17b.jpeg"], ["15a.jpeg", "15b.jpeg"]
     ],
     "summary": "The Gold Auto Detail provides a complete deep clean and wax for your vehicle, restoring both interior and exterior surfaces to a premium, polished finish.",
      "preview_image": "2a.jpeg"
