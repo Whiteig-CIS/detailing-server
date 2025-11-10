@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iggy's Detailing API</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Iggy's Detailing API</h1>
+    <p class="lead">
+      An open endpoint serving detailing packages for <strong>boats</strong> and <strong>automobiles</strong>.
+    </p>
+  </header>
+
+  <div id="divider">
+    <img src="./images/divider.svg" alt="divider"/>
+  </div>
+
+  <main class="container">
+    <section class="card">
+      <h2>Available Endpoints</h2>
+      <ul class="list">
+        <li><code>GET /api/packages</code> — Returns a JSON array of all detailing packages.</li>
+      </ul>
+      <p>
+        View raw JSON: <a href="https://detailing-server.onrender.com/api/packages" target="_blank" rel="noopener">/api/packages</a>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Example Usage</h2>
+      <p>Fetch with JavaScript:</p>
+      <pre><code>fetch("/api/packages")
+  .then(res => res.json())
+  .then(data => console.log(data));</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Response Structure</h2>
+      <p>Each package object includes:</p>
+      <ul class="list">
+        <li><code>_id</code> — unique identifier</li>
+        <li><code>vehicle_type</code> — "auto" | "boat"</li>
+        <li><code>teir</code> — "bronze" | "silver" | "gold"</li>
+        <li><code>interior_services</code> — string[]</li>
+        <li><code>exterior_services</code> — string[]</li>
+        <li><code>starting_price</code> — number</li>
+        <li><code>summary</code> — description</li>
+        <li><code>preview_image</code> — filename</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    © 2025 Iggy's Detailing • Node.js + Express
+  </footer>
+</body>
+</html>
