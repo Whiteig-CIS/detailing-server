@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const Joi = require("joi");
 const multer = require("multer");
 app.use(express.static("public")); // uses the public directory
 app.use(express.json());
@@ -145,11 +146,75 @@ app.get("/api/packages", (req, res) => { //Get All Packages
     res.send(packages);
 });
 
-/*
-app.get("/api/houses/:id", (req, res)=>{ //Get Specific Packages at a Given index
-    const house = houses.find((house)=>house._id === parseInt(req.params.id));
-    res.send(house);
-}); */
+// post
+
+app.post(
+  "/api/packages",
+  // match your form field names; adjust if you only have one:
+  upload.fields([
+    { name: "BeforeImg", maxCount: 1 },
+    { name: "AfterImg", maxCount: 1 },
+  ]),
+  (req, res) => {
+    try {
+      console.log("✅ Reached POST /api/packages");
+      console.log("Body:", req.body);
+      console.log("Files:", req.files);
+
+      const toArray = (v) =>
+        Array.isArray(v) ? v : (v !== undefined && v !== null ? [v] : []);
+
+      // normalize incoming fields
+      const interior_services = toArray(req.body.interior_services);
+      const exterior_services = toArray(req.body.exterior_services);
+
+      // build the object you actually want to validate
+      const candidate = {
+        vehicle_type: req.body.vehicle_type,
+        teir: req.body.teir, // or switch everything to 'tier'
+        starting_price: Number(req.body.starting_price),
+        summary: req.body.summary,
+        interior_services,
+        exterior_services,
+      };
+
+      const { error, value } = validatePackage(candidate);
+      if (error) {
+        console.log("❌ Joi validation error:", error);
+        return res.status(400).send(error.details?.[0]?.message || "Invalid input");
+      }
+
+      const pkg = {
+        _id: String(packages.length),
+        ...value,
+        images: "",
+        preview_image: "",
+        before_image: req.files?.BeforeImg?.[0]?.filename || null,
+        after_image: req.files?.AfterImg?.[0]?.filename || null,
+      };
+
+      packages.push(pkg);
+      return res.status(200).json(pkg);
+    } catch (err) {
+      console.error("💥 Server crashed:", err);
+      return res.status(500).send("Internal Server Error");
+    }
+  }
+);
+
+
+const validatePackage = (pkg) => {
+  const schema = Joi.object({
+    _id: Joi.any().optional(),
+    starting_price: Joi.number().min(0).max(1000).required(),
+    summary: Joi.string().min(3).required(),
+    teir: Joi.string().min(3).required(),       // or use 'tier' everywhere
+    vehicle_type: Joi.string().min(3).required(),
+    interior_services: Joi.array().items(Joi.string().min(1)).min(1).required(),
+    exterior_services: Joi.array().items(Joi.string().min(1)).min(1).required(),
+  });
+  return schema.validate(pkg);
+};
 
 app.listen(3001, () => {
 });
