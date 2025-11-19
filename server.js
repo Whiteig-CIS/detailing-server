@@ -148,12 +148,11 @@ app.get("/api/packages", (req, res) => { //Get All Packages
 
 // post
 
-app.post(
-  "/api/packages",
+app.post("/api/packages",
   // match your form field names; adjust if you only have one:
   upload.fields([
     { name: "BeforeImg", maxCount: 1 },
-    { name: "AfterImg", maxCount: 1 },
+    { name: "AfterImg", maxCount: 1 }, //TODO add prev image and allow multiple before/afyer
   ]),
   (req, res) => {
     try {
