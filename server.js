@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const Joi = require("joi");
 const multer = require("multer");
+const { after } = require("node:test");
 app.use(express.static("public")); // uses the public directory
 app.use(express.json());
 app.use(cors());
@@ -148,58 +149,54 @@ app.get("/api/packages", (req, res) => { //Get All Packages
 
 // post
 
-app.post("/api/packages",
-  // match your form field names; adjust if you only have one:
-  upload.fields([
-    { name: "BeforeImg", maxCount: 1 },
-    { name: "AfterImg", maxCount: 1 }, //TODO add prev image and allow multiple before/afyer
-  ]),
-  (req, res) => {
-    try {
-      console.log("✅ Reached POST /api/packages");
-      console.log("Body:", req.body);
-      console.log("Files:", req.files);
+app.post("/api/packages", upload.array("images", 20), (req, res) => {
 
-      const toArray = (v) =>
+  const toArray = (v) => // Helper function to convert to array
         Array.isArray(v) ? v : (v !== undefined && v !== null ? [v] : []);
 
-      // normalize incoming fields
-      const interior_services = toArray(req.body.interior_services);
-      const exterior_services = toArray(req.body.exterior_services);
+  req.body.interior_services = toArray(req.body.interior_services); // convert these to Arrays because Joi expects one
+  req.body.exterior_services = toArray(req.body.exterior_services);
 
-      // build the object you actually want to validate
-      const candidate = {
-        vehicle_type: req.body.vehicle_type,
-        teir: req.body.teir, // or switch everything to 'tier'
-        starting_price: Number(req.body.starting_price),
-        summary: req.body.summary,
-        interior_services,
-        exterior_services,
-      };
+  const result = validatePackage(req.body);
 
-      const { error, value } = validatePackage(candidate);
-      if (error) {
-        console.log("❌ Joi validation error:", error);
-        return res.status(400).send(error.details?.[0]?.message || "Invalid input");
-      }
-
-      const pkg = {
-        _id: String(packages.length),
-        ...value,
-        images: "",
-        preview_image: "",
-        before_image: req.files?.BeforeImg?.[0]?.filename || null,
-        after_image: req.files?.AfterImg?.[0]?.filename || null,
-      };
-
-      packages.push(pkg);
-      return res.status(200).json(pkg);
-    } catch (err) {
-      console.error("💥 Server crashed:", err);
-      return res.status(500).send("Internal Server Error");
-    }
+  if(result.error){ // If there is a validation error
+    console.log(result);
+    res.status(400);
+    return;
   }
-);
+
+  
+
+  const newPackage = { //construct the new package with all the non-file elements
+    _id: packages.length,
+    vehicle_type: req.body.vehicle_type,
+    teir: req.body.teir,
+    starting_price: req.body.starting_price,
+    summary: req.body.summary,
+    interior_services: req.body.interior_services ,
+    exterior_services: req.body.exterior_services ,
+  }
+
+  if(req.files) {
+    console.log("files found: "+req.files);
+    if(req.files.length !== 0) {
+      for(let i=0; i<req.files.length; ++i) {
+        if(i%2 == 0) {
+          console.log("Before Image: ["+i+"] "+req.files[i].filename);
+        }
+        else{
+          console.log("After Image: ["+i+"] "+req.files[i].filename);
+        }
+      }
+    }
+
+  }
+  else {
+    console.log("files not found");
+  }
+
+
+});
 
 
 const validatePackage = (pkg) => {
