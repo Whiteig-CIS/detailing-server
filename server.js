@@ -147,6 +147,16 @@ app.get("/api/packages", (req, res) => { //Get All Packages
   res.send(packages);
 });
 
+app.get("/api/packages/:id", (req, res) => {
+    const pkg = packages.find(p => p._id == req.params.id);
+
+    if (!pkg) {
+        return res.status(404).send("Package not found");
+    }
+
+    res.send(pkg);
+});
+
 // post
 
 app.post("/api/packages", upload.array("images", 20), (req, res) => {
@@ -181,7 +191,7 @@ app.post("/api/packages", upload.array("images", 20), (req, res) => {
     let toImages = [];
     if (req.files.length !== 0) {
 
-      newPackage.preview_image = req.files[0].filename; // setting the preview image to the first before picture for now.
+      newPackage.preview_image = req.files[1].filename; // setting the preview image to the first before picture for now.
 
       for (let i = 0; i < req.files.length; i++) {
         let pairIndex = Math.floor(i / 2); // group into pairs by divide by n and floor trick
@@ -210,6 +220,40 @@ app.post("/api/packages", upload.array("images", 20), (req, res) => {
 
   packages.push(newPackage);
   res.status(200).send(newPackage);
+
+});
+
+app.put("/api/packages/:id", upload.array("images", 20), (req, res) => {
+  console.log("------- Made it to PUT");
+  let pkg = packages.find(p => p._id == req.params.id);
+  console.log(pkg);
+
+  if(!pkg) {
+    res.status(400).send("Pakage not found");
+    console.log("-------233");
+  }
+
+  result = validatePackage(req.body);
+
+  if (result.error) {
+    res.status(400).send(result.error.details[0].message);
+    console.log("-------240");
+    console.log(result);
+    return;
+  }  
+
+  pkg.vehicle_type = req.body.vehicle_type;
+  pkg.teir = req.body.teir;
+  pkg.starting_price = req.body.starting_price;
+  pkg.summary = req.body.summary;
+  // Assuming these fields are arrays/objects that are correctly handled by the update
+  pkg.interior_services = req.body.interior_services; 
+  pkg.exterior_services = req.body.exterior_services;
+
+  res.send(pkg);
+  
+
+
 
 });
 
